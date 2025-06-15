@@ -1,0 +1,349 @@
+
+/* Variáveis padrão para tema inicial, cores neutras */
+:root {
+  --bg-main: #0b0b0c;
+  --bg-panel: #161617;
+  --gold: #d4a24c;
+  --text: #e6e1d5;
+  --border: #3a2f1f;
+  --highlight: #f5d67b;
+  --accent: #5c4b2e;
+}
+
+/* Reset e estilo base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--bg-main);
+  color: var(--text);
+  font-family: 'Orbitron', sans-serif;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+header {
+  background: #000;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+.logo {
+  height: 60px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.logo:hover {
+  transform: scale(1.1);
+}
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+nav a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.3s;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--highlight);
+  transition: width 0.3s ease;
+}
+nav a:hover {
+  color: var(--highlight);
+  text-shadow: 0 0 5px var(--highlight);
+}
+nav a:hover::after {
+  width: 100%;
+}
+/* Botão seletor tema */
+#seletor-tema {
+  background: var(--bg-panel);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+#seletor-tema:hover {
+  background: var(--gold);
+  color: var(--bg-main);
+  border-color: var(--highlight);
+}
+
+.wrapper {
+  display: flex;
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 0 20px;
+  gap: 30px;
+}
+
+.main {
+  flex: 3;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(212, 162, 76, 0.15);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.main h2 {
+  color: var(--gold);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 5px;
+}
+
+.quote {
+  border-left: 5px solid var(--highlight);
+  padding-left: 15px;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #ffefbc;
+}
+
+.main ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.main ul li {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--accent);
+}
+
+.sidebar {
+  flex: 1.2;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(255, 217, 128, 0.05);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.sidebar img {
+  width: 100%;
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.sidebar h3 {
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.sidebar p {
+  margin-bottom: 6px;
+}
+
+.sidebar .section-title {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--highlight);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+/* Temas alternativos */
+body.tema-escuro {
+  --bg-main: #0b0b0c;
+  --bg-panel: #161617;
+  --gold: #d4a24c;
+  --text: #e6e1d5;
+  --border: #3a2f1f;
+  --highlight: #f5d67b;
+  --accent: #5c4b2e;
+}
+
+body.tema-claro {
+  --bg-main: #f5f5f5;
+  --bg-panel: #ffffff;
+  --gold: #b8860b;
+  --text: #333333;
+  --border: #d4c38a;
+  --highlight: #ffd966;
+  --accent: #a67c00;
+}
+
+body.tema-ouro {
+  --bg-main: #1c1c1c;
+  --bg-panel: #2f2b22;
+  --gold: #ffd700;
+  --text: #fff9e3;
+  --border: #7a6e3d;
+  --highlight: #ffec99;
+  --accent: #d4af37;
+}
+
+body.tema-marinho {
+  --bg-main: #001f3f;
+  --bg-panel: #003366;
+  --gold: #99ccff;
+  --text: #d9e6f2;
+  --border: #335577;
+  --highlight: #6699cc;
+  --accent: #336699;
+}
+    /* Ícone da engrenagem */
+    .config-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  fill: var(--gold);
+  transition: fill 0.3s;
+}
+
+.config-icon:hover {
+  fill: var(--highlight);
+  filter: drop-shadow(0 0 4px var(--highlight));
+}
+
+/* Painel lateral de configurações */
+#config-panel {
+  position: fixed;
+  top: 0;
+  right: -320px; /* escondido inicialmente */
+  width: 320px;
+  height: 100vh;
+  background: var(--bg-panel);
+  border-left: 3px solid var(--gold);
+  box-shadow: -4px 0 15px rgba(212, 162, 76, 0.5);
+  padding: 20px;
+  box-sizing: border-box;
+  transition: right 0.35s ease;
+  z-index: 2000;
+  overflow-y: auto;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--text);
+}
+
+#config-panel.open {
+  right: 0;
+}
+
+#config-panel h2 {
+  color: var(--gold);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 8px;
+}
+
+#config-panel label {
+  display: block;
+  margin: 15px 0 6px 0;
+  font-weight: bold;
+  color: var(--highlight);
+}
+
+#config-panel select {
+  width: 100%;
+  padding: 8px 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  background: var(--bg-main);
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#config-panel select:hover {
+  border-color: var(--highlight);
+  color: var(--highlight);
+}
+
+/* Botão para fechar o painel */
+#config-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  font-size: 1.8rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+#config-close:hover {
+  color: var(--highlight);
+}
+
+/* Sombra de fundo ao abrir painel */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1500;
+}
+
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Outros estilos do site (exemplo da wrapper e main) */
+.wrapper {
+  display: flex;
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 0 20px;
+  gap: 30px;
+}
+
+.main {
+  flex: 3;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(212, 162, 76, 0.15);
+}
+.quote {
+color: var(--text);
+border-left: 4px solid var(--gold); /* Opcional, só se quiser destacar */
+padding-left: 1em;
+font-style: italic;
+margin: 1em 0;
+}
+
+
+footer {
+  background: var(--bg-panel);
+  text-align: center;
+  padding: 20px;
+  color: #bba06a;
+  margin-top: 40px;
+  border-top: 2px solid var(--accent);
+  font-size: 0.9rem;
+  transition: background 0.5s ease, color 0.5s ease;
+}
