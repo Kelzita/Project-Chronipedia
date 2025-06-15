@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../IMG/logo-chronipedia-title.png" type="image/png">
+    <link rel="stylesheet" href="../css/cadastrar.css">
+    <title>Cadastrar-se</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="../img/logo-chronipedia.png" alt="Chronipédia Logo" class="logo" onclick="location.href='../HTML/index.html'">
+        </div>
+    </header>
+    <main>
+        <section class="login">
+            <h2>Cadastrar-se</h2>
+            <form action="../PHP/cadastrar.php" method="post">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Insira seu email">
+
+                <label for="username">Nome do Usuário:</label>
+                <input type="text" id="username" name="username" required placeholder="Insira o nome do usuário">
+
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required placeholder="Insira sua senha"> 
+
+                <label for="data-nascimento">Data de Nascimento:</label>
+                <input type="date" id="data-nascimento" name="data-nascimento" required>
+
+                <label for="genero">Gênero:</label>
+                <select id="genero" name="genero" required>
+                    <option value="" disabled selected>Selecione seu Gênero:</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+
+                </select>
+                
+                <button class="botao" type="submit">Cadastrar</button>
+            </form>
+        </section>
+    </main>
+    
+</body>
+</html>

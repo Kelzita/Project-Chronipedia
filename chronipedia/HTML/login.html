@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../IMG/logo-chronipedia-title.png" type="image/png" />
+    <link rel="stylesheet" href="../css/cadastrar.css" />
+    <title>Entrar - Chronipédia</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="../img/logo-chronipedia.png" alt="Chronipédia Logo" class="logo" onclick="location.href='../HTML/index.html'" />
+        </div>
+    </header>
+    <main>
+        <section class="login">
+            <h2>Entrar</h2>
+            <form action="../PHP/login.php" method="post">
+                <label for="login">Email ou Nome de Usuário:</label>
+                <input type="text" id="login" name="login" required placeholder="Digite seu email ou nome de usuário">
+
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" requiredplaceholder="Digite sua senha"/>
+
+                <button class="botao" type="submit">Entrar</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
