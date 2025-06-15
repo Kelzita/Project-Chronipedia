@@ -1,12 +1,13 @@
 <?php
 session_start();
-require_once('conexao.php'); // Ajuste o caminho se necessário
+require_once('conexao.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $login = trim($_POST['login']);  // Campo único para email ou usuário
     $senha = $_POST['senha'];
 
-    // Consulta para buscar o usuário pelo email OU pelo nome
+    // Consulta para buscar o usuário cadastrado pelo email OU pelo user ( o nome kkkkk) 
+
     $sql = "SELECT id_usuarios, nome, senha_hash FROM usuarios WHERE email = :login OR nome = :login LIMIT 1";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':login' => $login]);
@@ -29,3 +30,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Método inválido.";
 }
 ?>
+
+//to feliz pra caramba beijo
