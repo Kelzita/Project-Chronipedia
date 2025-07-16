@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adicionar Personagem - Chronipédia</title>
+  <link rel="icon" href="../IMG/logo-chronipedia-title.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #181818;
+      color: #d4a24c;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #f0c75e;
+      font-family: 'Orbitron', sans-serif;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #d4a24c;
+    }
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      background: #2a2a2a;
+      border: 2px solid #d4a24c;
+      border-radius: 6px;
+      color: #e6e1d5;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    textarea {
+      min-height: 60px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      color: #e6e1d5;
+    }
+    table, th, td {
+      border: 1px solid #d4a24c;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    .btn {
+      background: #d4a24c;
+      color: #121212;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 25px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #f0c75e;
+    }
+    .add-relationship {
+      margin-top: 10px;
+      background-color: #2a2a2a;
+      border: 1px solid #d4a24c;
+      color: #d4a24c;
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Adicionar Novo Personagem</h1>
+  <form id="characterForm">
+    <label for="name">Nome do Personagem</label>
+    <input type="text" id="name" name="name" placeholder="Ex: Yosano Fujikawa" required />
+
+    <label for="quote">Citação/Frase Marcante</label>
+    <textarea id="quote" name="quote" placeholder="Ex: 'Aqueles que clamam por vingança encontrarão em mim o eco de sua fúria.'" required></textarea>
+
+    <label for="communities">Comunidades</label>
+    <textarea id="communities" name="communities" placeholder="Descreva as comunidades que reverenciam o personagem..." required></textarea>
+
+    <label for="character_desc">Descrição do Personagem</label>
+    <textarea id="character_desc" name="character_desc" placeholder="Biografia, personalidade, história..." required></textarea>
+
+    <label for="chronologies">Cronologias</label>
+    <textarea id="chronologies" name="chronologies" placeholder="Linha do tempo e eras da história..." required></textarea>
+
+    <label for="universes">Universos</label>
+    <textarea id="universes" name="universes" placeholder="Mundos e versões do personagem..." required></textarea>
+
+    <label>Relacionamentos</label>
+    <div id="relationshipsContainer">
+      <!-- Um relacionamento padrão -->
+      <div class="relationship-entry" style="margin-bottom:10px;">
+        <input type="text" placeholder="Nome do Personagem" class="rel-name" required style="width:30%; margin-right:10px;" />
+        <input type="text" placeholder="Tipo de Relação" class="rel-type" required style="width:30%; margin-right:10px;" />
+        <input type="text" placeholder="Notas" class="rel-notes" style="width:35%;" />
+      </div>
+    </div>
+    <button type="button" class="add-relationship" onclick="addRelationship()">+ Adicionar relacionamento</button>
+
+    <label for="curiosities">Curiosidades</label>
+    <textarea id="curiosities" name="curiosities" placeholder="Curiosidades e fatos interessantes..." required></textarea>
+
+    <label for="quick_info">Informações Rápidas (Ex: Nome, Idade, Arma, etc.)</label>
+    <textarea id="quick_info" name="quick_info" placeholder="Formato livre, linhas curtas, ex: 'Nome: Yosano Fujikawa'" required></textarea>
+
+    <button type="submit" class="btn">Gerar Página do Personagem</button>
+  </form>
+
+  <script>
+    function addRelationship() {
+      const container = document.getElementById('relationshipsContainer');
+      const div = document.createElement('div');
+      div.className = 'relationship-entry';
+      div.style.marginBottom = '10px';
+      div.innerHTML = `
+        <input type="text" placeholder="Nome do Personagem" class="rel-name" required style="width:30%; margin-right:10px;" />
+        <input type="text" placeholder="Tipo de Relação" class="rel-type" required style="width:30%; margin-right:10px;" />
+        <input type="text" placeholder="Notas" class="rel-notes" style="width:35%;" />
+      `;
+      container.appendChild(div);
+    }
+
+    document.getElementById('characterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Capturar dados do formulário
+      const name = document.getElementById('name').value.trim();
+      const quote = document.getElementById('quote').value.trim();
+      const communities = document.getElementById('communities').value.trim();
+      const character_desc = document.getElementById('character_desc').value.trim();
+      const chronologies = document.getElementById('chronologies').value.trim();
+      const universes = document.getElementById('universes').value.trim();
+      const curiosities = document.getElementById('curiosities').value.trim();
+      const quick_info = document.getElementById('quick_info').value.trim();
+
+      // Relacionamentos
+      const relNames = [...document.querySelectorAll('.rel-name')].map(i => i.value.trim());
+      const relTypes = [...document.querySelectorAll('.rel-type')].map(i => i.value.trim());
+      const relNotes = [...document.querySelectorAll('.rel-notes')].map(i => i.value.trim());
+
+      // Montar HTML do personagem
+      let relationshipsRows = '';
+      for(let i = 0; i < relNames.length; i++) {
+        if(relNames[i] && relTypes[i]) {
+          relationshipsRows += `
+          <tr>
+            <td>${relNames[i]}</td>
+            <td>${relTypes[i]}</td>
+            <td>${relNotes[i]}</td>
+          </tr>`;
+        }
+      }
+
+      const generatedHTML = `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chronipédia - ${name}</title>
+  <link rel="icon" href="../IMG/logo-chronipedia-title.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/wikipediateste.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #181818;
+      color: #d4a24c;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #f0c75e;
+      font-family: 'Orbitron', sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      color: #e6e1d5;
+    }
+    table, th, td {
+      border: 1px solid #d4a24c;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    .sidebar {
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../IMG/logo-chronipedia.png" alt="Chronipédia Logo" style="width: 120px; cursor:pointer;" onclick="location.href='../HTML/index.html'" />
+  </header>
+
+  <main>
+    <h1>${name}</h1>
+    <blockquote style="font-style: italic; font-size: 1.2rem; color: #fffde7;">${quote}</blockquote>
+
+    <section>
+      <h2>Comunidades</h2>
+      <p>${communities.replace(/\n/g, '<br>')}</p>
+    </section>
+
+    <section>
+      <h2>Personagem</h2>
+      <p>${character_desc.replace(/\n/g, '<br>')}</p>
+    </section>
+
+    <section>
+      <h2>Cronologias</h2>
+      <p>${chronologies.replace(/\n/g, '<br>')}</p>
+    </section>
+
+    <section>
+      <h2>Universos</h2>
+      <p>${universes.replace(/\n/g, '<br>')}</p>
+    </section>
+
+    <section>
+      <h2>Relacionamentos</h2>
+      <table>
+        <thead>
+          <tr><th>Personagem</th><th>Tipo de Relação</th><th>Notas</th></tr>
+        </thead>
+        <tbody>
+          ${relationshipsRows}
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Curiosidades</h2>
+      <p>${curiosities.replace(/\n/g, '<br>')}</p>
+    </section>
+
+    <section class="sidebar">
+      <h2>Informações Rápidas</h2>
+      <p>${quick_info.replace(/\n/g, '<br>')}</p>
+    </section>
+  </main>
+
+  <footer style="margin-top: 40px; text-align:center; color:#7ecb7e;">
+    Desenvolvido por Chronipédia &copy; 2025
+  </footer>
+</body>
+</html>
+      `;
+
+      // Criar nova aba com a página do personagem gerada
+      const newWindow = window.open();
+      newWindow.document.write(generatedHTML);
+      newWindow.document.close();
+    });
+  </script>
+</body>
+</html>

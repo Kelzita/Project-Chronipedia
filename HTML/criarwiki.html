@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Comunidade - Chronipédia</title>
+  <link rel="icon" href="../IMG/logo-chronipedia-title.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/criarcomunidade.js" defer></script>
+</head>
+<body>
+  <header>
+    <img src="../IMG/logo-chronipedia.png" alt="Logo Chronipédia" class="logo" onclick="location.href='../HTML/index.html'">
+    <h1>Criar Nova Comunidade</h1>
+  </header>
+
+  <main>
+    <form action="../PHP/criar_comunidade.php" method="POST" enctype="multipart/form-data" id="form-comunidade">
+
+      <label for="nome">Nome da Comunidade</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" rows="5" required></textarea>
+
+      <label for="universo">Universo Relacionado</label>
+      <input type="text" id="universo" name="universo">
+
+      <label for="imagem">Imagem de Capa</label>
+      <input type="file" id="imagem" name="imagem" accept="image/*">
+
+      <label for="tags">Tags (separadas por vírgula)</label>
+      <input type="text" id="tags" name="tags">
+
+      <fieldset>
+        <legend>Privacidade</legend>
+        <label><input type="radio" name="privacidade" value="publica" checked> Pública</label>
+        <label><input type="radio" name="privacidade" value="privada"> Privada</label>
+      </fieldset>
+
+      <button type="submit">Criar Comunidade</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Chronipédia — Conectando ideias e universos.</p>
+  </footer>
+</body>
+</html>

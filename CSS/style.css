@@ -74,7 +74,33 @@ nav {
     transform: scale(1.03);
 }
 
+.botoes-login {
+    display: flex;
+    gap: 10px; /* Espaço entre os botões */
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 30px;
+    margin-top: 20px;
+}
 
+.botaocreate {
+    background-color: black;
+    color: #D4A34C;
+    border: 2px solid #D4A34C;
+    font-weight: 500;
+    padding: 6px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.botaocreate:hover {
+    background-color: #D4A34C;
+    color: black;
+    transform: scale(1.03);
+}
 
 /* Seções principais */
 main {
