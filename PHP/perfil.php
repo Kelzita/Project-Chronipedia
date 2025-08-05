@@ -80,7 +80,7 @@ $comunidades = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
       </div>
     <?php else: ?>
-      <p>Você ainda não criou comunidades. <a href="criarwiki.html" class="btn">Criar agora</a></p>
+      <p>Você ainda não criou comunidades. <a href="../HTML/criarwiki.html" class="btn">Criar agora</a></p>
     <?php endif; ?>
   </section>
 </main>
